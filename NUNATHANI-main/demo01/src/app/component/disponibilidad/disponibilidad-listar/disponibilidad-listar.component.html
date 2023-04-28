@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div style="text-align: center;">
+        <h1>Lista de disponibilidad</h1>
+      </div>
+      <link href="https://fonts.googleapis.com/css2?family=Bellota&display=swap" rel="stylesheet">
+
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <mat-form-field style="flex: 1; margin-right: 16px;">
+          <input matInput (keyup)="filtrar($event)" placeholder="Buscar" />
+        </mat-form-field>
+
+        <button mat-raised-button color="warn" routerLink="/disponibilidad/disponibilidadinsertar">Nuevo</button>
+      </div>
+
+
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="No">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;">No.</th>
+          <td mat-cell *matCellDef="let element" style="text-align: center;">{{ element.id }}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Inicio del turno">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;">Inicio del turno</th>
+          <td mat-cell *matCellDef="let element" style="text-align: center;">{{ element.inicio_turno }}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="Fin del turno">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;">Fin del turno</th>
+          <td mat-cell *matCellDef="let element" style="text-align: center;">{{ element.fin_turno }}</td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="Dias laborales">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;">Dias laborales</th>
+          <td mat-cell *matCellDef="let element" style="text-align: center;"> {{ element.dias_laborales }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="ceditar">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Acciones </th>
+          <td mat-cell *matCellDef="let element" style="text-align: center; height: 100px;">
+            <button mat-icon-button class="custom-button" [routerLink]="['edicion', element.id]"> <!-- Utilizar una clase de estilo personalizada "custom-button" -->
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button class="custom-button" (click)="confirmar(element.id)"> <!-- Utilizar una clase de estilo personalizada "custom-button" -->
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+    </div>
+  </body>
+
+</html>

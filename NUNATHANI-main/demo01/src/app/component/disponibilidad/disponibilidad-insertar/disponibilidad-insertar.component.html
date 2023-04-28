@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ng-container>
+    <form [formGroup]="form" (submit)="aceptar()">
+      <h1 class="mensaje">Ingrese los datos</h1>
+      <mat-form-field class="example-full-width">
+        <mat-label>Código</mat-label>
+        <input matInput placeholder="No" formControlName="id" readonly/>
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Inicio turno</mat-label>
+        <input required
+          matInput
+          placeholder="Inicio del turno"
+          formControlName="inicio_turno"
+        />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Fin turno</mat-label>
+        <input required
+          matInput
+          placeholder="Fin del turno"
+          formControlName="fin_turno"
+        />
+      </mat-form-field>
+
+      <br />
+      <!-- Ejemplo de un mat-select con selección múltiple -->
+      <mat-form-field appearance="fill">
+        <mat-label>Dias</mat-label>
+        <mat-select
+          placeholder="Elija día"
+          formControlName="dias_laborales"
+          multiple
+          required> <!-- Agregar el atributo "required" -->
+          <mat-option value="Lunes">Lunes</mat-option>
+          <mat-option value="Martes">Martes</mat-option>
+          <mat-option value="Miercoles">Miércoles</mat-option>
+          <mat-option value="Jueves">Jueves</mat-option>
+          <mat-option value="Viernes">Viernes</mat-option>
+          <mat-option value="Sabado">Sábado</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <br />
+      <div style="text-align: center">
+        <button mat-icon-button color="primary">
+          <mat-icon>check</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" routerLink="/disponibilidad">
+          <mat-icon>cancel</mat-icon>
+        </button>
+        <br />
+      </div>
+
+      <p>{{ mensaje }}</p>
+    </form>
+  </ng-container>
+  </body>
+</html>

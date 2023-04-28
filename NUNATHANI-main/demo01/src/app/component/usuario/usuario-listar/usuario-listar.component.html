@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Usuario </title>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div style="text-align: center;">
+      <h1>Lista de Usuarios</h1>
+    </div>
+    <link href="https://fonts.googleapis.com/css2?family=Bellota&display=swap" rel="stylesheet">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <mat-form-field style="flex: 1; margin-right: 16px;">
+        <input matInput (keyup)="filtrar($event)" placeholder="Buscar" />
+      </mat-form-field>
+
+      <button mat-raised-button color="warn" routerLink="/usuario/usuario-insertar">Nuevo</button>
+    </div>
+    
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="no">
+        <th mat-header-cell *matHeaderCellDef style="text-align: center;"> No. </th>
+        <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.id}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Nombre </th>
+        <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.nameUsuario}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="apellido">
+        <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Apellido </th>
+        <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.SnameUsuario}} </td>
+      </ng-container>
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="contraseña">
+        <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Contraseña </th>
+        <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.PassUsuario}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="telefono">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Telefono </th>
+          <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.telusuario}} </td>
+        </ng-container>
+
+      
+        <ng-container matColumnDef="ceditar">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Acciones </th>
+          <td mat-cell *matCellDef="let element" style="text-align: center; height: 100;">
+            <button mat-icon-button class="custom-button" [routerLink]="['edicion', element.id]">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button class="custom-button" (click)="confirmar(element.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        
+      
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+</body>
+
+</html>

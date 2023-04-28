@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="display:flex; justify-content:center; align-items:center;">
+    <form [formGroup]="form" (submit)="aceptar()">
+        <h1>Ingresar Datos</h1>
+        <mat-form-field class="example-full-width">
+            <mat-label>Codigo</mat-label>
+            <input  matInput placeholder="codigo" formControlName="id" readonly>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Nombre</mat-label>
+            <input required matInput placeholder="nombre" formControlName="nameUsuario">
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Apellido</mat-label>
+            <input required matInput placeholder="apellido" formControlName="SnameUsuario">
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Contraseña</mat-label>
+            <input required matInput placeholder="contraseña" formControlName="PassUsuario">
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Telefono</mat-label>
+            <input required matInput placeholder="telefono" formControlName="telusuario">
+        </mat-form-field>
+        <br />
+        <div style="text-align: center">
+            <button mat-icon-button color="primary">
+              <mat-icon>check</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" routerLink="/usuario">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </div>
+        <p>{{mensaje}}</p>
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <form [formGroup]="form" (submit)="aceptar()">
+
+      <h1 class="mensaje">Ingrese los datos</h1>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Código</mat-label>
+        <input matInput placeholder="No" formControlName="id" readonly />
+      </mat-form-field>
+
+      <br />
+
+      <!-- Ejemplo de un mat-select con selección  -->
+      <mat-form-field appearance="fill">
+        <mat-label>Disponibilidad</mat-label>
+        <mat-select required placeholder="Seleccione la disponibilidad" formControlName="disponibilidad">
+          <mat-option value="disponible">Disponible</mat-option>
+          <mat-option value="no disponible">No disponible</mat-option>
+        </mat-select>
+
+      </mat-form-field>
+
+      <br/>
+
+      <div style="text-align: center">
+        <button mat-icon-button color="primary">
+          <mat-icon>check</mat-icon>
+        </button>
+
+        <button mat-icon-button color="warn" routerLink="/estado">
+          <mat-icon>cancel</mat-icon>
+        </button>
+        <br />
+
+
+      </div>
+
+      <p>{{ mensaje }}</p>
+
+    </form>
+  </body>
+
+</html>
